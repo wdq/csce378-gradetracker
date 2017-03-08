@@ -36,7 +36,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="#">Init</a></li>
+            <li><a href="./index.html">Home</a></li>
             <li><a href="./plan/index.html">Plan</a></li>
             <li><a href="./classes/index.html">Classes</a></li>
           </ul>
@@ -49,25 +50,63 @@
     <div class="container">
     	<div class="row">
     		<div class="col-md-6">
-    			<h1>Class Overview</h1>
-    			<hr>
-    			<h4>Semester: Spring 2017</h4>
-    			<ul>
-    				<li><b><a href="#">JAPN 302</a></b></li>
-    				<ul><li>Current grade: A</li></ul>
-    				<li><b><a href="#">CSCE 378</a></b></li>
-    				<ul><li>Current grade: B</li></ul>
-    			</ul>    			
-    		</div>
-    		<div class="col-md-3">
-    			<h1>GPA Overview</h1>
-    			<hr>    			
-    			<h4>Cumulative:</h4>
-    			<center><h1>3.4</h1></center>
-    			<h4>Semester:</h4>
-    			<center><h1>3.1</h1></center>
+    			<h1>Application init success.</h1>   			
     		</div>
     	</div>
     </div>
   </body>
 </html>
+
+<script>
+  $( document ).ready(function() {
+      console.log( "Starting" );
+      var db = new PouchDB("gradetracker");
+      db.info().then(function (info) {
+        console.log(info);
+      })
+
+      var classdb = new PouchDB("gradetracker-classes");
+      var exampleClass = {
+        "_id": "1",
+        "Semester": "Spring 2017",
+        "Code": "ELEC 304",
+        "Section": "001",
+        "Name": "Signals and Systems",
+        "ProfessorName": "Khalid Sayood",
+        "ProfessorEmail": "ksayood@unl.edu",
+        "GradeFormat": [
+          {"Prelecture Quizzes": 5},
+          {"Homework Quizzes and Projects": 15},
+          {"Tests": 60},
+          {"Final": 20}
+        ],
+        "GradeScale": [
+          {"A": [90, 100]},
+          {"B": [80, 89]},
+          {"C": [70, 79]},
+          {"D": [60, 69]},
+          {"F": [0,69]}
+        ]
+      };
+      classdb.put(exampleClass);
+      classdb.info().then(function (info) {
+        console.log(info);
+      })  
+      
+      var gradedb = new PouchDB("gradetracker-grades");
+      var exampleGrade = {
+        "_id": "1",
+        "ClassId": "1",
+        "GradeFormat": "Tests",
+        "Grade": 82.5,
+        "MaxGrade": 100,
+        "Name": "Exam 1",
+        "Date": "2017-03-07"
+      };
+      gradedb.put(exampleGrade);
+      gradedb.info().then(function (info) {
+        console.log(info);
+      }) 
+
+  });
+</script>

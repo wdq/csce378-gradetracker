@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Grade Tracker</title>
+    <title>View Classes - Grade Tracker</title>
 
-    <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/site.css" rel="stylesheet">
+    <link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/site.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -16,9 +16,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="libs/jquery/jquery-3.1.1.js"></script>
-    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="libs/pouchdb/pouchdb-6.1.2.js"></script>
+    <script src="../libs/jquery/jquery-3.1.1.js"></script>
+    <script src="../libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../libs/pouchdb/pouchdb-6.1.2.js"></script>
 
   </head>
   <body>
@@ -32,16 +32,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Grade Tracker</a>
+          <a class="navbar-brand" href="../index.html">Grade Tracker</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="./plan/index.html">Plan</a></li>
-            <li><a href="./classes/index.html">Classes</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../plan/index.html">Plan</a></li>
+            <li class="active"><a href="#">Classes</a></li>
           </ul>
         </div>
       </div>
+    </nav>
+
+    <nav class="navbar navbar-default" role="navigation" id="submenu">
+      <ul class="nav navbar-nav" id="submenu-items">
+        <li class="subactive"><a href="#">View Classes</a></li>
+        <li><a href="#">Add Class</a></li>
+      </ul>
     </nav>
 
     <br>
@@ -49,23 +56,7 @@
     <div class="container">
     	<div class="row">
     		<div class="col-md-6">
-    			<h1>Class Overview</h1>
-    			<hr>
-    			<h4>Semester: Spring 2017</h4>
-    			<ul>
-    				<li><b><a href="#">JAPN 302</a></b></li>
-    				<ul><li>Current grade: A</li></ul>
-    				<li><b><a href="#">CSCE 378</a></b></li>
-    				<ul><li>Current grade: B</li></ul>
-    			</ul>    			
-    		</div>
-    		<div class="col-md-3">
-    			<h1>GPA Overview</h1>
-    			<hr>    			
-    			<h4>Cumulative:</h4>
-    			<center><h1>3.4</h1></center>
-    			<h4>Semester:</h4>
-    			<center><h1>3.1</h1></center>
+    			<h1></h1>		
     		</div>
     	</div>
     </div>

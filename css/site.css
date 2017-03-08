@@ -1,0 +1,16 @@
+.navbar {
+	margin-bottom:-1px;
+    border-radius:0;
+}
+
+#submenu {
+    background-color: #e7e7e7;
+    margin-bottom:20px;
+}
+
+.navbar-default .navbar-nav > .subactive > a,
+.navbar-default .navbar-nav > .subactive > a:hover,
+.navbar-default .navbar-nav > .subactive > a:focus {
+  color: #555555;
+  background-color: #c7c7c7;
+}
