@@ -89,6 +89,29 @@
         ]
       };
       classdb.put(exampleClass);
+      var exampleClass2 = {
+        "_id": "2",
+        "Semester": "Spring 2017",
+        "Code": "CSCE 361",
+        "Section": "001",
+        "Name": "Software Engineering",
+        "ProfessorName": "Gregg Rothermel",
+        "ProfessorEmail": "grother@cse.unl.edu",
+        "GradeFormat": [
+          {"Assignments": 15},
+          {"Midterm": 20},
+          {"Final Exam": 30},
+          {"Project": 35}
+        ],
+        "GradeScale": [
+          {"A": [90, 100]},
+          {"B": [80, 89]},
+          {"C": [70, 79]},
+          {"D": [60, 69]},
+          {"F": [0,69]}
+        ]
+      };
+      classdb.put(exampleClass2);      
       classdb.info().then(function (info) {
         console.log(info);
       })  
@@ -104,6 +127,16 @@
         "Date": "2017-03-07"
       };
       gradedb.put(exampleGrade);
+      var exampleGrade2 = {
+        "_id": "2",
+        "ClassId": "2",
+        "GradeFormat": "Midterm",
+        "Grade": 92,
+        "MaxGrade": 100,
+        "Name": "Midterm Exam",
+        "Date": "2017-03-07"
+      };
+      gradedb.put(exampleGrade2);      
       gradedb.info().then(function (info) {
         console.log(info);
       }) 

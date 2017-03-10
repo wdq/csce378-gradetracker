@@ -52,12 +52,7 @@
     			<h1>Class Overview</h1>
     			<hr>
     			<h4>Semester: Spring 2017</h4>
-    			<ul>
-    				<li><b><a href="#">JAPN 302</a></b></li>
-    				<ul><li>Current grade: A</li></ul>
-    				<li><b><a href="#">CSCE 378</a></b></li>
-    				<ul><li>Current grade: B</li></ul>
-    			</ul>    			
+    			<ul class="classesList"></ul>    			
     		</div>
     		<div class="col-md-3">
     			<h1>GPA Overview</h1>
@@ -71,3 +66,24 @@
     </div>
   </body>
 </html>
+
+<script>
+  $( document ).ready(function() {
+    console.log("Home");
+    var classdb = new PouchDB("gradetracker-classes");
+    var gradedb = new PouchDB("gradetracker-grades");
+
+    classdb.allDocs({
+      include_docs: true,
+      attachments: true
+    }).then(function(result) {
+      for(var i = 0; i < result.rows.length; i++) {
+        console.log(result.rows[i])
+        var nameHtml = '<li><b><a href="./classes/viewclass.html?id=' + result.rows[i].id + '">' + result.rows[i].doc.Code + '</a></b></li>';
+        var gradeHtml = '<ul><li>Current grade: B</li></ul>';
+        $(".classesList").append(nameHtml);
+        $(".classesList").append(gradeHtml);
+      }
+    });
+  });
+</script>
