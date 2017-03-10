@@ -136,7 +136,38 @@
         "Name": "Midterm Exam",
         "Date": "2017-03-07"
       };
-      gradedb.put(exampleGrade2);      
+      gradedb.put(exampleGrade2);
+
+      gradedb.put({
+        "_id": "3",
+        "ClassId": "1",
+        "GradeFormat": "Homework Quizzes and Projects",
+        "Grade": 9,
+        "MaxGrade": 10,
+        "Name": "Quiz 1",
+        "Date": "2017-01-25"
+      });
+
+      gradedb.put({
+        "_id": "4",
+        "ClassId": "1",
+        "GradeFormat": "Homework Quizzes and Projects",
+        "Grade": 8,
+        "MaxGrade": 10,
+        "Name": "Quiz 2",
+        "Date": "2017-01-30"
+      });
+
+      gradedb.put({
+        "_id": "5",
+        "ClassId": "1",
+        "GradeFormat": "Prelecture Quizzes",
+        "Grade": 19,
+        "MaxGrade": 20,
+        "Name": "Prelecture 1",
+        "Date": "2017-01-24"
+      });
+
       gradedb.info().then(function (info) {
         console.log(info);
       }) 
