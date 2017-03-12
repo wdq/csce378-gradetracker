@@ -87,6 +87,14 @@
               <label for="classNameInput">Class Name/Title</label>
               <input type="text" class="form-control" id="classNameInput" placeholder="Linear Algebra">
             </div>
+            <div class="form-group">
+              <label for="professorNameInput">Professor Name</label>
+              <input type="text" class="form-control" id="professorNameInput" placeholder="Tri Lai">
+            </div>
+            <div class="form-group">
+              <label for="professorEmailInput">Professor Email</label>
+              <input type="text" class="form-control" id="professorEmailInput" placeholder="tlai3@unl.edu">
+            </div>                        
             <button class="btn btn-default step2BackButton">Back</button>
             <button class="btn btn-primary step2NextButton">Next</button>
           </div>    
@@ -405,10 +413,55 @@
       </div>
 
       <div class="row confirmationRow">
-        <div class="col-md-10">
-          <h3>Add class - Confirmation</h3>
-          <hr>    
+        <div class="row">
+          <div class="col-md-10">
+            <h3>Add class - Confirmation</h3>
+            <hr>
+            <h4 class="confirmationClassName"></h4>
+            <h5 class="confirmationProfessor"></h5>    
+          </div>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Grade Format:</h4>
+            <hr>
+            <div class="form">
+              <div class="row">
+                <div class="col-md-6">
+                  <h5><b>Name/Type</b></h5>
+                </div>
+                <div class="col-md-3">
+                  <h5><b>Weight/Percentage</b></h5>
+                </div>
+              </div>
+              <div class="confirmationGradeFormatRows"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4>Grade Scale</h4>
+            <hr>
+            <div class="form">
+              <div class="row">
+                <div class="col-md-3">
+                  <h5><b>From</b></h5>
+                </div>
+                <div class="col-md-3">
+                  <h5><b>To</b></h5>
+                </div>
+                <div class="col-md-2">
+                  <h5><b>Letter</b></h5>
+                </div>
+              </div>
+              <div class="confirmationGradeScaleRows"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10">
+            <button class="btn btn-default confirmationBackButton">Back</button>
+            <button class="btn btn-primary confirmationNextButton">Submit</button>
+          </div>
+        </div>        
       </div>
 
     </div>
@@ -421,7 +474,7 @@
     var gradedb = new PouchDB("gradetracker-grades");
 
     $('.step2Row').hide();
-    $('.step1Row').hide();
+    $('.step3Row').hide();
     $('.confirmationRow').hide();
 
     $('.step1NextButton').click(function() {
@@ -439,9 +492,79 @@
       $('.step1Row').show();
     });
 
+
+    var newClass = {};
     $('.step3NextButton').click(function() {
       $('.step3Row').hide();
       $('.confirmationRow').show();
+
+      newClass = {
+        "_id": "3",
+        "Semester": $('#semesterInput').val(),
+        "Code":  $('#classCodeNumberSectionInput').val().split('-')[0],
+        "Section": $('#classCodeNumberSectionInput').val().split('-')[1],
+        "Name": $('#classNameInput').val(),
+        "ProfessorName": $('#professorNameInput').val(),
+        "ProfessorEmail": $('#professorEmailInput').val(),
+        "GradeFormat": [
+          {"Assignments": 15},
+          {"Midterm": 20},
+          {"Final Exam": 30},
+          {"Project": 35}
+        ],
+        "GradeScale": [
+          {"A": [90, 100]},
+          {"B": [80, 89]},
+          {"C": [70, 79]},
+          {"D": [60, 69]},
+          {"F": [0,69]}
+        ]
+      };
+      var classNameHtml = newClass.Code + "-" + newClass.Section + " " + newClass.Name + " " + newClass.Semester;
+      $(".confirmationClassName").append(classNameHtml);
+      var professorNameHtml = newClass.ProfessorName + " (" + newClass.ProfessorEmail + ")";
+      $(".confirmationProfessor").append(professorNameHtml);
+      for(var i = 0; i < newClass.GradeFormat.length; i++) {
+        var currentFormat = newClass.GradeFormat[i];
+        var currentFormatHtml = '' +
+                  '<div class="row">' +
+                    '<div class="col-md-6">' +
+                      '<div class="form-group">' +
+                        Object.keys(currentFormat)[0] +
+                      '</div>' +
+                    '</div>' +
+                    '<div class="col-md-3">' +
+                      '<div class="form-group">' +
+                        currentFormat[Object.keys(currentFormat)[0]] +
+                      '</div>' +
+                    '</div>' +
+                  '</div>' +      
+        '';        
+        $(".confirmationGradeFormatRows").append(currentFormatHtml);
+      }
+      for(var i = 0; i < newClass.GradeScale.length; i++) {
+        var currentScale = newClass.GradeScale[i];
+        var currentScaleHtml = '' +
+                  '<div class="row">' +
+                    '<div class="col-md-3">' +
+                      '<div class="form-group">' +
+                        currentScale[Object.keys(currentScale)[0]][0] +
+                      '</div>' +
+                    '</div>' +
+                    '<div class="col-md-3">' +
+                      '<div class="form-group">' +
+                        currentScale[Object.keys(currentScale)[0]][1] +
+                      '</div>' +
+                    '</div>                ' +
+                    '<div class="col-md-2">' +
+                      '<div class="form-group">' +
+                        Object.keys(currentScale)[0] +
+                      '</div>' +
+                    '</div>' +
+                  '</div>' +
+              '';        
+        $(".confirmationGradeScaleRows").append(currentScaleHtml);
+      }      
     });
 
     $('.step3BackButton').click(function() {
@@ -493,7 +616,7 @@
                       '<input type="text" class="form-control gradeScaleLetterInput" placeholder="A+">' +
                     '</div>' +
                   '</div>' +
-                  '<div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>' +
+                  '<div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>' +    
                 '</div>' +
             '';
             $('.gradeScaleRows').append(gradeScaleRowHtml);
@@ -505,14 +628,31 @@
       row.remove();
     });
 
+    $('.confirmationBackButton').click(function() {
+      $('.confirmationRow').hide();
+      $('.step3Row').show();
+    });    
 
-
-    // classCodeNumberSectionInput
-    // semesterInput
-    // classNameInput
-
-
-
+    $('.confirmationNextButton').click(function() {
+      console.log(newClass);
+      var maxIndex = 0;
+      classdb.allDocs({
+        include_docs: true,
+        attachments: true
+      }).then(function(result) {
+        for(var i = 0; i < result.rows.length; i++) {
+          if(result.rows[i].id > maxIndex) {
+            maxIndex = result.rows[i].id;
+          }
+          if(i+1 == result.rows.length) {
+            newClass._id = (maxIndex + 1);
+            console.log(newClass);
+            classdb.put(newClass);
+            window.location.href= "./viewclass.html?id=" + newClass._id;                
+          }
+        }        
+      });        
+    });
   });
 
 </script>
