@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>View Class - Grade Tracker</title>
+    <title>Add Grade - Grade Tracker</title>
 
     <link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../libs/DataTables-1.10.13/css/jquery.dataTables.css" rel="stylesheet">
@@ -59,33 +59,33 @@
     	<div class="row">
     		<div class="col-md-10">
     			<h3 class="className"></h3>
-          <hr>
-          <table class="gradesTable">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Document Title</th>
-                <th>%/Score</th>
-                <th>Grade</th>
-              </tr>
-            </thead>
-            <tbody class="gradesTableBody">
-            </tbody>
-          </table>
+          <hr>          
     		</div>
-        <div class="col-md-2">
-          <h3>Overall Grade</h3>
-          <hr>
-          <center><h1 class="overallGrade">B</h1></center>
-          <h3>Percentage</h3>
-          <hr>
-          <center><h1 class="overallPercentage">81.5%</h1></center>
-        </div>
     	</div>
       <div class="row">
+        <div class="col-md-4">
+          <div class="form">
+            <div class="form-group">
+              <label for="typeInput">Type</label>
+              <select class="form-control" id="typeInput">
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="titleInput">Title</label>
+              <input type="text" class="form-control" id="titleInput" placeholder="Homework #1">
+            </div>
+            <div class="form-group">
+              <label for="gradeInput">Grade</label>
+              <input type="text" class="form-control" id="gradeInput" placeholder="91%">
+              <small id="gradeInputHelp" class="form-text text-muted">Input percentage (91%), score (91/100), or letter (A-).</small>   
+            </div>                      
+          </div>            
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-6">
-          <button class="btn btn-primary addGradeButton">Add Grade</button>
+          <button class="btn btn-default backButton">Back</button>
+          <button class="btn btn-primary addGradeButton">Submit</button>
         </div>
       </div>
     </div>
@@ -98,31 +98,70 @@
     var gradedb = new PouchDB("gradetracker-grades");
 
     var classId = getUrlParameter('id');
+    var classDoc = {};
     classdb.get(classId).then(function(doc) {
-      $('.className').append(doc.Name + ' (' + doc.Code + '-' + doc.Section + ')');
-    });
-
-    gradedb.allDocs({
-      include_docs: true,
-      attachments: true
-    }).then(function(result) {
-      for(var i = 0; i < result.rows.length; i++) {
-        if(result.rows[i].doc.ClassId == classId.toString()) {
-          var rowHtml = '<tr><td>' + result.rows[i].doc.Date + '</td><td>' + result.rows[i].doc.GradeFormat + '</td><td>' + result.rows[i].doc.Name + '</td><td>' + ((result.rows[i].doc.Grade/result.rows[i].doc.MaxGrade)*100) + '%</td><td>' + 'B' + '</td></tr>';
-          $('.gradesTableBody').append(rowHtml);
-
-        }
-        if(i+1 == result.rows.length) {
-              $('.gradesTable').DataTable({
-                "order": [[0, "desc"]]
-              });
-        }
+      $('.className').append("Add Grade - " + doc.Name + ' (' + doc.Code + '-' + doc.Section + ')');
+      for(var i = 0; i < doc.GradeFormat.length; i++) {
+        var gradeTypeHtml = '<option>' + Object.keys(doc.GradeFormat[i])[0] + '</option>';
+        $("#typeInput").append(gradeTypeHtml);
       }
+      classDoc = doc;
     });
 
     $('.addGradeButton').click(function() {
-      window.location.href = "./addgrade.html?id=" + classId;
+
+      var grade = $('#gradeInput').val();
+      var gradeNumber = 0;
+      var maxGradeNumber = 0;
+
+      if(grade.includes("/")){
+        gradeNumber = grade.split('/')[0];
+        maxGradeNumber = grade.split('/')[1];
+      } else if(grade.match(/[A-Z]/i)) {
+        for(var j = 0; j < classDoc.GradeScale.length; j++) {
+          if(Object.keys(classDoc.GradeScale[j])[0] == grade) {
+            gradeNumber = classDoc.GradeScale[j][grade][0];
+          }
+        }
+        maxGradeNumber = 100;
+      } else {
+        gradeNumber = grade.replace("%", "");
+        maxGradeNumber = 100;
+      }
+
+      var now = new Date();
+      var newGrade = {
+        "_id": "1",
+        "ClassId": classId,
+        "GradeFormat": $('#typeInput').val(),
+        "Grade": gradeNumber,
+        "MaxGrade": maxGradeNumber,
+        "Name": $('#titleInput').val(),
+        "Date": now.toISOString().slice(0,10)
+      };
+
+      var maxIndex = 0;
+      gradedb.allDocs({
+        include_docs: true,
+        attachments: true
+      }).then(function(result) {
+        for(var i = 0; i < result.rows.length; i++) {
+          if(result.rows[i].id > maxIndex) {
+            maxIndex = result.rows[i].id;
+          }
+          if(i+1 == result.rows.length) {
+            newGrade._id = (maxIndex + 1);
+            console.log(newGrade);
+            gradedb.put(newGrade);
+            window.location.href= "./viewclass.html?id=" + classId;                
+          }
+        }        
+      });
     });
+
+    $('.backButton').click(function() {
+      window.location.href = "./viewclass.html?id=" + classId;
+    });    
 
   });
 var getUrlParameter = function getUrlParameter(sParam) {
