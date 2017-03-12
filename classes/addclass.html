@@ -113,23 +113,25 @@
                   <h5>Weight/Percentage</h5>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Final Exam">
+              <div class="gradeFormatRows">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeFormatNameInput" placeholder="Final Exam">
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="35%">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeFormatWeightInput" placeholder="35%">
+                    </div>
                   </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeFormatDeleteButton">x</button></div>
                 </div>
-                <div class="col-md-1"><button class="btn btn-danger">x</button></div>
-              </div>
+              </div>              
               <div class="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-3"></div>
-                <div class="col-md-1"><button class="btn btn-primary">+</button></div>
+                <div class="col-md-1"><button class="btn btn-primary gradeFormatAddButton">+</button></div>
               </div>
             </div>
           </div>
@@ -148,29 +150,247 @@
                   <h5>Letter</h5>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="97">
+              <div class="gradeScaleRows">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="97">
+                    </div>
                   </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="100">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="A+">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
                 </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="100">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="93">
+                    </div>
                   </div>
-                </div>                
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="A+">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="97">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="A">
+                    </div>
                   </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
                 </div>
-                <div class="col-md-1"><button class="btn btn-danger">x</button></div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="90">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="93">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="A-">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="87">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="90">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="B+">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="83">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="87">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="B">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="80">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="83">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="B-">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="77">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="80">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="C+">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="73">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="77">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="C">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="70">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="73">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="C-">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="67">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="70">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="D+">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="63">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="67">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="D">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="60">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="63">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="D-">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleFromInput" placeholder="97" value="0">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleToInput" placeholder="100" value="60">
+                    </div>
+                  </div>                
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control gradeScaleLetterInput" placeholder="A+" value="F">
+                    </div>
+                  </div>
+                  <div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-3"></div>
                 <div class="col-md-2"></div>
-                <div class="col-md-1"><button class="btn btn-primary">+</button></div>
+                <div class="col-md-1"><button class="btn btn-primary gradeScaleAddButton">+</button></div>
               </div>
             </div>            
           </div>
@@ -201,7 +421,7 @@
     var gradedb = new PouchDB("gradetracker-grades");
 
     $('.step2Row').hide();
-    $('.step3Row').hide();
+    $('.step1Row').hide();
     $('.confirmationRow').hide();
 
     $('.step1NextButton').click(function() {
@@ -228,6 +448,69 @@
       $('.step3Row').hide();
       $('.step2Row').show();
     });
+
+
+    $('.gradeFormatAddButton').click(function() {
+      var gradeFormatRowHtml = '' +
+                '<div class="row">' +
+                  '<div class="col-md-6">' +
+                    '<div class="form-group">' +
+                      '<input type="text" class="form-control gradeFormatNameInput" placeholder="Final Exam">' +
+                    '</div>' +
+                  '</div>' +
+                  '<div class="col-md-3">' +
+                    '<div class="form-group">' +
+                      '<input type="text" class="form-control gradeFormatWeightInput" placeholder="35%">' +
+                    '</div>' +
+                  '</div>' +
+                  '<div class="col-md-1"><button class="btn btn-danger gradeFormatDeleteButton">x</button></div>' +
+                '</div>' +      
+      '';
+      $('.gradeFormatRows').append(gradeFormatRowHtml);
+    });
+
+    $(document).on('click', '.gradeFormatDeleteButton', function() {
+      var row = $(this).parent().parent();
+      row.remove();
+    });
+
+
+    $('.gradeScaleAddButton').click(function() {
+      var gradeScaleRowHtml = '' +
+                '<div class="row">' +
+                  '<div class="col-md-3">' +
+                    '<div class="form-group">' +
+                      '<input type="text" class="form-control gradeScaleFromInput" placeholder="97">' +
+                    '</div>' +
+                  '</div>' +
+                  '<div class="col-md-3">' +
+                    '<div class="form-group">' +
+                      '<input type="text" class="form-control gradeScaleToInput" placeholder="100">' +
+                    '</div>' +
+                  '</div>                ' +
+                  '<div class="col-md-2">' +
+                    '<div class="form-group">' +
+                      '<input type="text" class="form-control gradeScaleLetterInput" placeholder="A+">' +
+                    '</div>' +
+                  '</div>' +
+                  '<div class="col-md-1"><button class="btn btn-danger gradeScaleDeleteBUtton">x</button></div>' +
+                '</div>' +
+            '';
+            $('.gradeScaleRows').append(gradeScaleRowHtml);
+
+    });
+
+    $(document).on('click', '.gradeScaleDeleteBUtton', function() {
+      var row = $(this).parent().parent();
+      row.remove();
+    });
+
+
+
+    // classCodeNumberSectionInput
+    // semesterInput
+    // classNameInput
+
 
 
   });
