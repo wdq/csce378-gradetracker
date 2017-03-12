@@ -66,6 +66,7 @@
               <label class="sr-only" for="classCodeNumberSectionInput">Class</label>
               <input type="text" class="form-control" id="classCodeNumberSectionInput" placeholder="MATH 314-003">
             </div>
+            <button class="btn btn-default classCodeNumberSectionHelpButton">?</button>
             <button class="btn btn-primary step1NextButton">Next</button>
           </div>		
     		</div>
@@ -77,23 +78,32 @@
           <hr>
           <div class="form">
             <div class="form-group">
-              <label for="semesterInput">Semester</label>
-              <select class="form-control" id="semesterInput">
-                <option>Spring 2017</option>
-                <option>Fall 2016</option>
-              </select>
+                <label for="semesterInput">Semester</label>
+                <div class="form-inline">
+                <select class="form-control" id="semesterInput">
+                  <option>Spring 2017</option>
+                  <option>Fall 2016</option>
+                </select>
+              </div>
             </div>
             <div class="form-group">
               <label for="classNameInput">Class Name/Title</label>
-              <input type="text" class="form-control" id="classNameInput" placeholder="Linear Algebra">
+              <div class="form-inline">
+                <input type="text" class="form-control" id="classNameInput" placeholder="Linear Algebra">
+                <button class="btn btn-default classNameHelpButton">?</button>
+              </div>
             </div>
             <div class="form-group">
               <label for="professorNameInput">Professor Name</label>
-              <input type="text" class="form-control" id="professorNameInput" placeholder="Tri Lai">
+              <div class="form-inline">
+                <input type="text" class="form-control" id="professorNameInput" placeholder="Tri Lai">
+              </div>
             </div>
             <div class="form-group">
               <label for="professorEmailInput">Professor Email</label>
-              <input type="text" class="form-control" id="professorEmailInput" placeholder="tlai3@unl.edu">
+              <div class="form-inline">
+                <input type="text" class="form-control" id="professorEmailInput" placeholder="tlai3@unl.edu">
+              </div>
             </div>                        
             <button class="btn btn-default step2BackButton">Back</button>
             <button class="btn btn-primary step2NextButton">Next</button>
@@ -110,7 +120,7 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            <h4>Grade Format:</h4>
+            <h4>Grade Format: <button class="btn btn-default gradeFormatHelpButton">?</button></h4>
             <hr>
             <div class="form">
               <div class="row">
@@ -144,7 +154,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <h4>Grade Scale:</h4>
+            <h4>Grade Scale: <button class="btn btn-default gradeScaleHelpButton">?</button></h4>
             <hr>
             <div class="form">
               <div class="row">
@@ -506,20 +516,28 @@
         "Name": $('#classNameInput').val(),
         "ProfessorName": $('#professorNameInput').val(),
         "ProfessorEmail": $('#professorEmailInput').val(),
-        "GradeFormat": [
-          {"Assignments": 15},
-          {"Midterm": 20},
-          {"Final Exam": 30},
-          {"Project": 35}
-        ],
-        "GradeScale": [
-          {"A": [90, 100]},
-          {"B": [80, 89]},
-          {"C": [70, 79]},
-          {"D": [60, 69]},
-          {"F": [0,69]}
-        ]
+        "GradeFormat": [],
+        "GradeScale": []
       };
+
+      $('.gradeFormatRows').find('.row').each(function() {
+        var gradeFormatName = $(this).find('.gradeFormatNameInput').val();
+        var gradeFormatWeight = $(this).find('.gradeFormatWeightInput').val().replace("%", "");
+        var newGradeFormat = {};
+        newGradeFormat[gradeFormatName] = gradeFormatWeight;
+        newClass.GradeFormat.push(newGradeFormat);
+      });
+
+      $('.gradeScaleRows').find('.row').each(function() {
+        var gradeScaleFrom = $(this).find('.gradeScaleFromInput').val();
+        var gradeScaleTo = $(this).find('.gradeScaleToInput').val();
+        var gradeScaleLetter = $(this).find('.gradeScaleLetterInput').val();
+        var newGradeScale = {};
+        newGradeScale[gradeScaleLetter] = [gradeScaleFrom, gradeScaleTo];
+        newClass.GradeScale.push(newGradeScale);        
+      });      
+
+
       var classNameHtml = newClass.Code + "-" + newClass.Section + " " + newClass.Name + " " + newClass.Semester;
       $(".confirmationClassName").append(classNameHtml);
       var professorNameHtml = newClass.ProfessorName + " (" + newClass.ProfessorEmail + ")";
