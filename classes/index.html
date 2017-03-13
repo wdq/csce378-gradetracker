@@ -55,10 +55,35 @@
 
     <div class="container">
     	<div class="row">
-    		<div class="col-md-6">
-    			<h1></h1>		
+    		<div class="col-md-10">
+    			<h3>Spring Semester 2017</h3>
+          <hr>
+          <ul class="classesList"></ul>		
     		</div>
     	</div>
     </div>
   </body>
 </html>
+
+<script>
+  $( document ).ready(function() {
+    console.log("Home");
+    var classdb = new PouchDB("gradetracker-classes");
+    var gradedb = new PouchDB("gradetracker-grades");
+
+    classdb.allDocs({
+      include_docs: true,
+      attachments: true
+    }).then(function(result) {
+      for(var i = 0; i < result.rows.length; i++) {
+        console.log(result.rows[i])
+        var nameHtml = '<li><b><a href="./viewclass.html?id=' + result.rows[i].id + '">' + result.rows[i].doc.Name + ' (' + result.rows[i].doc.Code + ')</a></b></li>';
+        var gradeHtml = '<ul><li>Current grade: B</li></ul>';
+        var buttonHtml = '<ul><li><a href="./addgrade.html?id=' + result.rows[i].id + '" class="btn btn-default">Add Grade</a></li></ul>';
+        $(".classesList").append(nameHtml);
+        $(".classesList").append(gradeHtml);
+        $(".classesList").append(buttonHtml);
+      }
+    });
+  });
+</script>
