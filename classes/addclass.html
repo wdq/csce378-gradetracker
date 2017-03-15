@@ -24,6 +24,109 @@
 
   </head>
   <body>
+
+<!-- classCodeNumberSectionHelpButton -->
+<div class="modal fade" id="classCodeNumberSectionHelpButtonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Help: Enter the class code, number, and section</h4>        
+      </div>
+      <div class="modal-body">
+        <p>Find a section of your syllabus similar to the example section below.</p>
+        <p>In this case the class code is MATH, the class number is 314, and the class section is 003.</p>
+        <p>If this were your syllabus you would enter MATH 314-003.</p>
+        <h4>Example syllabus:</h4>
+            <img width="100%" src="../images/help/SyllabusTitle.JPG"/>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- classNameHelpButton -->
+<div class="modal fade" id="classNameHelpButtonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Help: Class Name/Title</h4>        
+      </div>
+      <div class="modal-body">
+        <p>Please enter a name for the class. Here are some examples:</p>
+        <ul>
+          <li>Calculus I</li>
+          <li>Linear Algebra</li>
+          <li>English I</li>
+          <li>Computer Science I</li>         
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- gradeFormatHelpButton -->
+<div class="modal fade" id="gradeFormatHelpButtonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Help: Grade Format</h4>        
+      </div>
+      <div class="modal-body">
+        <p>Find a section of your syllabus similar to the example section below.</p>
+        <p>In the example syllabus there are Homework and Quizzes, Midterm, and Final Exam types.</p>
+        <p>Those types have weights of 30%, 35%, and 35%.</p>
+        <p>Use the "x" icon to remove a format, and the "+" icon to add a format.</p>
+        <h4>Example syllabus:</h4>
+            <img width="100%" src="../images/help/SyllabusGradeFormat.JPG"/>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- gradeScaleHelpButton -->
+<div class="modal fade" id="gradeScaleHelpButtonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Help: Grade Scale</h4>        
+      </div>
+      <div class="modal-body">
+        <p>Find a section of your syllabus similar to the example section below.</p>
+        <p>In the example syllabus the grading scale begins with:</p>
+        <ul>
+          <li>A+, 95% - 100%</li>
+          <li>A, 90% - 94.99%</li>
+          <li>A-, 86.66% - 89.99%</li>
+          <li>B+, 83.33% - 86.65%</li>
+        </ul>
+        <p>A standard scale has already been inputted for you.</p>
+        <p>You can edit the scale by pressing the "x" icon to remove a letter, and the "+" button to add a letter.</p>
+        <h4>Example syllabus:</h4>
+            <img width="100%" src="../images/help/SyllabusGradeScale.JPG"/>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
@@ -671,6 +774,20 @@
         }        
       });        
     });
+
+    $('.classCodeNumberSectionHelpButton').click(function() {
+      $('#classCodeNumberSectionHelpButtonModal').modal('show');
+    });
+    $('.classNameHelpButton').click(function() {
+      $('#classNameHelpButtonModal').modal('show');
+    });
+    $('.gradeFormatHelpButton').click(function() {
+      $('#gradeFormatHelpButtonModal').modal('show');
+    });
+    $('.gradeScaleHelpButton').click(function() {
+      $('#gradeScaleHelpButtonModal').modal('show');
+    });
+
   });
 
 </script>
