@@ -73,6 +73,116 @@
     var classdb = new PouchDB("gradetracker-classes");
     var gradedb = new PouchDB("gradetracker-grades");
 
+    classdb.info().then(function (result) {
+      if(result.doc_count < 1) {
+        console.log("classes init...");
+      var exampleClass = {
+        "_id": "1",
+        "Semester": "Spring 2017",
+        "Code": "ELEC 304",
+        "Section": "001",
+        "Name": "Signals and Systems",
+        "ProfessorName": "Khalid Sayood",
+        "ProfessorEmail": "ksayood@unl.edu",
+        "GradeFormat": [
+          {"Prelecture Quizzes": 5},
+          {"Homework Quizzes and Projects": 15},
+          {"Tests": 60},
+          {"Final": 20}
+        ],
+        "GradeScale": [
+          {"A": [90, 100]},
+          {"B": [80, 89]},
+          {"C": [70, 79]},
+          {"D": [60, 69]},
+          {"F": [0,69]}
+        ]
+      };
+      classdb.put(exampleClass);
+      var exampleClass2 = {
+        "_id": "2",
+        "Semester": "Spring 2017",
+        "Code": "CSCE 361",
+        "Section": "001",
+        "Name": "Software Engineering",
+        "ProfessorName": "Gregg Rothermel",
+        "ProfessorEmail": "grother@cse.unl.edu",
+        "GradeFormat": [
+          {"Assignments": 15},
+          {"Midterm": 20},
+          {"Final Exam": 30},
+          {"Project": 35}
+        ],
+        "GradeScale": [
+          {"A": [90, 100]},
+          {"B": [80, 89]},
+          {"C": [70, 79]},
+          {"D": [60, 69]},
+          {"F": [0,69]}
+        ]
+      };
+      classdb.put(exampleClass2);  
+      location.reload();
+      }
+    });
+
+    gradedb.info().then(function (result) {
+      if(result.doc_count < 1) {
+        console.log("Grades init...");
+      var exampleGrade = {
+        "_id": "1",
+        "ClassId": "1",
+        "GradeFormat": "Tests",
+        "Grade": 82.5,
+        "MaxGrade": 100,
+        "Name": "Exam 1",
+        "Date": "2017-03-07"
+      };
+      gradedb.put(exampleGrade);
+      var exampleGrade2 = {
+        "_id": "2",
+        "ClassId": "2",
+        "GradeFormat": "Midterm",
+        "Grade": 92,
+        "MaxGrade": 100,
+        "Name": "Midterm Exam",
+        "Date": "2017-03-07"
+      };
+      gradedb.put(exampleGrade2);
+
+      gradedb.put({
+        "_id": "3",
+        "ClassId": "1",
+        "GradeFormat": "Homework Quizzes and Projects",
+        "Grade": 9,
+        "MaxGrade": 10,
+        "Name": "Quiz 1",
+        "Date": "2017-01-25"
+      });
+
+      gradedb.put({
+        "_id": "4",
+        "ClassId": "1",
+        "GradeFormat": "Homework Quizzes and Projects",
+        "Grade": 8,
+        "MaxGrade": 10,
+        "Name": "Quiz 2",
+        "Date": "2017-01-30"
+      });
+
+      gradedb.put({
+        "_id": "5",
+        "ClassId": "1",
+        "GradeFormat": "Prelecture Quizzes",
+        "Grade": 19,
+        "MaxGrade": 20,
+        "Name": "Prelecture 1",
+        "Date": "2017-01-24"
+      });
+      location.reload();
+      }
+    });
+
     classdb.allDocs({
       include_docs: true,
       attachments: true
