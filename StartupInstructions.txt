@@ -1,0 +1,20 @@
+******************** Startup Instructions ********************
+  * Platform:
+    - It's entirely client side Javascript, CSS, and HTML,
+      so it should work on any platform with a modern browser.
+    - It was developed and tested using Chrome 56.0.2924.87,
+      on Windows 10.
+      
+  * Software Requirements:
+    - Modern web browser.
+    
+  * Starting It Up:
+    1. Extract the GradeTracker.zip, or clone this repo:
+       https://github.com/wdq/csce378-gradetracker.git
+    2. Open the extracted folder.
+    3. Open the index.html file in the root of the folder
+       in your web browser (drag and drop to a tab works).
+    4. The page should quickly refresh on the first load,
+       and then display example classes (ELEC 304, CSCE 361).
+    5. There is also a demo available at:
+       http://cse-iis.quade.co/GradeTracker/
