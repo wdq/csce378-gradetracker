@@ -14,3 +14,8 @@
   color: #555555;
   background-color: #c7c7c7;
 }
+
+.form-control::-webkit-input-placeholder { color: #cccccc; }
+.form-control:-moz-placeholder { color: #cccccc; }
+.form-control::-moz-placeholder { color: #cccccc; }
+.form-control:-ms-input-placeholder { color: #cccccc; }
